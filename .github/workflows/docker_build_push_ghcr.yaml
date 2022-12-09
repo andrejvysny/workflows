@@ -19,7 +19,7 @@ on:
         required: true
         type: string
     secrets:
-      GITHUB_TOKEN:
+      access_token:
         required: true
 
 
@@ -43,7 +43,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ inputs.access_token }}
 
       - name: Build image and push to GitHub Container Registry
         uses: docker/build-push-action@v3
