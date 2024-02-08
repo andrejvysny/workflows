@@ -45,7 +45,7 @@ jobs:
           password: ${{ secrets.access_token }}
 
       - name: Build and push to GitHub Container Registry
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           context: ${{ inputs.context }}
           tags: ${{ inputs.tags }}
@@ -53,8 +53,8 @@ jobs:
           target: ${{ inputs.target }}
           file: ${{ inputs.dockerfile }}
 
-      - name: Image data
-        run: |
-          echo "Image Id: ${{ steps.docker_build.outputs.imageid }}" 
-          echo "Image Digest: ${{ steps.docker_build.outputs.digest }}" 
-          echo "Image Metadata: ${{ steps.docker_build.outputs.metadata }}"
+ #     - name: Image data
+ #       run: |
+ #         echo "Image Id: ${{ steps.docker_build.outputs.imageid }}" 
+ #         echo "Image Digest: ${{ steps.docker_build.outputs.digest }}" 
+ #         echo "Image Metadata: ${{ steps.docker_build.outputs.metadata }}"
