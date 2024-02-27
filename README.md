@@ -37,6 +37,8 @@ jobs:
     with:
       server:  example.com # FTP SERVER
       username: username # FTP USERNAME
+      folder-name: dist # Build folder name Default: dist
+
     secrets:
       password: ${{ secrets.FTP_PASS }}
 ```
