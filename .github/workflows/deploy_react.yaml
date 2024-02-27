@@ -50,6 +50,7 @@ jobs:
           path: ./${{inputs.folder-name}}
     
   deploy:
+    needs: build
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:

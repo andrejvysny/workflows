@@ -32,7 +32,7 @@ on:
     
 jobs:
   
-  build_and_push:
+  deploy:
     uses: andrejvysny/workflows/.github/workflows/deploy_react.yaml@main
     with:
       server:  example.com # FTP SERVER
