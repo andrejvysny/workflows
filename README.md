@@ -19,3 +19,24 @@ jobs:
     secrets:
       access_token: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+
+
+
+## Build and Deploy React - FTP
+For: https://github.com/andrejvysny/react-template/
+
+```yml
+on:
+  push:
+    
+jobs:
+  
+  build_and_push:
+    uses: andrejvysny/workflows/.github/workflows/deploy_react.yaml@main
+    with:
+      server:  example.com # FTP SERVER
+      username: username # FTP USERNAME
+    secrets:
+      password: ${{ secrets.FTP_PASS }}
+```

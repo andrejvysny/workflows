@@ -1,0 +1,73 @@
+name: 🚀 Deploy React - NPM Build
+# https://github.com/marketplace/actions/ftp-deploy
+
+on: 
+    workflow_call:
+        inputs:
+            server:
+              required: true
+              type: string
+            username:
+              required: true
+              type: string
+            port:
+              required: false
+              type: string
+              default: "21"
+            folder-name:
+              required: false
+              type: string
+              default: dist
+            local-dir:
+                required: false
+                type: string
+                default: ./${{inputs.folder-name}}
+            server-dir:
+                required: false
+                type: string
+                default: ./
+        secrets:
+            password:
+              required: true
+jobs:
+
+  build: 
+    name: Build Production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+      - run: npm ci
+      - run: npm run build
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build
+          path: ./${{inputs.folder-name}}
+    
+  deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+          name: production-build
+          path: ./${{inputs.folder-name}}
+
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ inputs.server }}
+        username: ${{ inputs.username}}
+        password: ${{ secrets.password }}
+        port: ${{ inputs.port }}
+        local-dir: ${{inputs.local-dir}}
+        server-dir: ${{inputs.server-dir}}
