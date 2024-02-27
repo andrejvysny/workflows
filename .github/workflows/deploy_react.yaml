@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: production-build
-          path: dist
+          path: ${{inputs.folder-name}}
     
   deploy:
     needs: build
@@ -59,7 +59,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
           name: production-build
-          path: dist
+          path: ${{inputs.folder-name}}
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
