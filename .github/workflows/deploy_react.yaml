@@ -68,5 +68,5 @@ jobs:
         username: ${{ inputs.username}}
         password: ${{ secrets.password }}
         port: ${{ inputs.port }}
-        local-dir: ./dist
+        local-dir: ./${{inputs.folder-name}}/
         server-dir: ${{inputs.server-dir}}
