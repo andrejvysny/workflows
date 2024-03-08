@@ -40,6 +40,5 @@ jobs:
         # neets to find out how to choose images from github registry
 
           imageToDeploy: ghcr.io/andrejvysny/complex-fe@sha256:5d64d5482972c99f33e44b1387889d7c4700cad32cddb2e342e91ab96b3834b0
-          acrName: ghcr.io
           containerAppName: aca-test-frontend
           resourceGroup: rg-github-actions-test-test-swedencentral
