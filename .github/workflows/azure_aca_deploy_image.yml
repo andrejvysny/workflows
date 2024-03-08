@@ -27,5 +27,5 @@ jobs:
         # neets to find out how to choose images from github registry
 
           imageToDeploy: ghcr.io/andrejvysny/complex-fe
-          containerAppName: aca-test-frontend
+          containerAppName: aca-dev-frontend
           resourceGroup: rg-myapp-dev-swedencentral
