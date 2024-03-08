@@ -14,9 +14,9 @@ jobs:
     steps:
 
       #https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust-user-assigned-managed-identity?pivots=identity-wif-mi-methods-azp
-      - name: Azure login
-        uses: azure/login@v2
+      - uses: azure/login@v2
         with:
+          auth-type: IDENTITY
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
 
