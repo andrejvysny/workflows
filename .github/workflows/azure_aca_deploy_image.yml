@@ -1,6 +1,10 @@
 name: ACA - Update Container Image
 on: 
   workflow_dispatch:
+    inputs:
+      imagetag:
+        type: string
+        required: true
 
 permissions:
       id-token: write
@@ -26,6 +30,6 @@ jobs:
         # TODO: option 2: choose which image to deploy - when not selected -> deploy latest 
         # neets to find out how to choose images from github registry
 
-          imageToDeploy: ghcr.io/andrejvysny/complex-fe
+          imageToDeploy: ghcr.io/andrejvysny/complex-fe:${{ github.event.inputs.imagetag }}
           containerAppName: aca-dev-frontend
           resourceGroup: rg-myapp-dev-swedencentral
