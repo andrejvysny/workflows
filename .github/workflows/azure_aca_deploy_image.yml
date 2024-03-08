@@ -26,6 +26,6 @@ jobs:
         # TODO: option 2: choose which image to deploy - when not selected -> deploy latest 
         # neets to find out how to choose images from github registry
 
-          imageToDeploy: ghcr.io/andrejvysny/complex-fe:latest
+          imageToDeploy: ghcr.io/andrejvysny/nginx-hello-world:latest
           containerAppName: aca-test-frontend
           resourceGroup: rg-github-actions-test-test-swedencentral
