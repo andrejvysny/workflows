@@ -13,8 +13,8 @@ permissions:
 
 jobs: 
   deploy:
-    runs-on: ubuntu-latest
 
+    runs-on: ubuntu-latest
     steps:
       - name: Azure Login
         uses: azure/login@v2
@@ -26,11 +26,6 @@ jobs:
       - name: Update Running Image
         uses: azure/container-apps-deploy-action@v2
         with:
-        # TODO: option 1: deploy always latest image.
-
-        # TODO: option 2: choose which image to deploy - when not selected -> deploy latest 
-        # neets to find out how to choose images from github registry
-
-          imageToDeploy: ghcr.io/andrejvysny/complex-fe:${{ github.event.inputs.imagetag }}
-          containerAppName: aca-dev-frontend
-          resourceGroup: rg-myapp-dev-swedencentral
+          imageToDeploy: ghcr.io/andrejvysny/example:${{ github.event.inputs.imagetag }}
+          containerAppName: <APP_NAME>
+          resourceGroup: <RG_NAME>
